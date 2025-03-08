@@ -19,6 +19,7 @@ pub(crate) async fn create_dense_index(
     distance_metric: DistanceMetric,
     quantization: DenseIndexQuantizationDto,
     index_params: DenseIndexParamsDto,
+    index_name: String
 ) -> Result<(), IndexesError> {
     let collection = ctx
         .ain_env
@@ -54,6 +55,7 @@ pub(crate) async fn create_dense_index(
         storage_type,
         sample_threshold,
         is_configured,
+        index_name
     )
     .await
     .map_err(|e| IndexesError::FailedToCreateIndex(e.to_string()))?;

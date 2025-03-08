@@ -38,6 +38,7 @@ pub async fn init_dense_index_for_collection(
     storage_type: StorageType,
     sample_threshold: usize,
     is_configured: bool,
+    index_name: String
 ) -> Result<Arc<DenseIndex>, WaCustomError> {
     let collection_name = &collection.name;
     let collection_path: Arc<Path> = collection.get_path();
@@ -60,7 +61,7 @@ pub async fn init_dense_index_for_collection(
     //
     // what is the prop file exactly?
     // a file that stores the quantized version of raw vec
-    let prop_file = Arc::new(RwLock::new(
+    let prop_file: Arc<RwLock<fs::File>> = Arc::new(RwLock::new(
         fs::OpenOptions::new()
             .create(true)
             .read(true)

@@ -106,6 +106,7 @@ pub(crate) struct CreateDenseIndexDto {
     pub distance_metric_type: DistanceMetric,
     pub quantization: DenseIndexQuantizationDto,
     pub index: DenseIndexParamsDto,
+    pub index_name: String
 }
 
 #[derive(Debug, Deserialize)]

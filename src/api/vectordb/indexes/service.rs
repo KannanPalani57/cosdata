@@ -20,6 +20,7 @@ pub(crate) async fn create_dense_index(
         create_index_dto.distance_metric_type,
         create_index_dto.quantization,
         create_index_dto.index,
+        create_index_dto.index_name
     )
     .await
 }
